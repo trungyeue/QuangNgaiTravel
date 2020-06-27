@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="170dp"
+    android:id="@+id/chuyen"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="8dp">
+
+        <ImageView
+            android:id="@+id/iteam1"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            app:cardCornerRadius="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bienmykhe1"
+            tools:ignore="MissingPrefix" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/texta1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="Bãi biển Mỹ Khê"
+        android:textStyle="bold" />
+
+    <RatingBar
+        android:id="@+id/rating1"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp" />
+</LinearLayout>
