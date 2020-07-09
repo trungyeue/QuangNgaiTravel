@@ -7,6 +7,10 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.javachipnavigationbar.Fragment.AccountFragment;
+import com.example.javachipnavigationbar.Fragment.BreakfastFragment;
+import com.example.javachipnavigationbar.Fragment.DiscoventFrgament;
+import com.example.javachipnavigationbar.Fragment.HomeFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState==null){
             bootomNav.setItemSelected(R.id.home,true);
             fragmentManager=getSupportFragmentManager();
-            HomFragment homFragment=new HomFragment();
+            HomeFragment homFragment=new HomeFragment();
             fragmentManager.beginTransaction().replace(R.id.fragment_container,homFragment).commit();
         }
         bootomNav.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
@@ -31,10 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (i) {
                     case R.id.home:
-                        fragment = new HomFragment();
+                        fragment = new HomeFragment();
                         break;
                     case R.id.discover:
                         fragment = new DiscoventFrgament();
+                        break;
+                    case R.id.breakfast:
+                        fragment = new BreakfastFragment();
                         break;
                     case R.id.account:
                         fragment = new AccountFragment();
@@ -48,5 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
 }

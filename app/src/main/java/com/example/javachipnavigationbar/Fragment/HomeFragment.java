@@ -1,13 +1,10 @@
-package com.example.javachipnavigationbar;
+package com.example.javachipnavigationbar.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,37 +15,35 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.javachipnavigationbar.Adapter.SlidePageAdapter;
 import com.example.javachipnavigationbar.Adapter.SlidePageAdapter1;
 import com.example.javachipnavigationbar.Adapter.SliderAdapterExample;
 import com.example.javachipnavigationbar.Api.ApiInterface;
 import com.example.javachipnavigationbar.Group.DuLich;
 import com.example.javachipnavigationbar.Model.Slide;
+import com.example.javachipnavigationbar.Page.LoginPage;
+import com.example.javachipnavigationbar.R;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,14 +52,14 @@ import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.javachipnavigationbar.Page.LoginPage.userId;
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
-public class HomFragment extends Fragment {
+public class HomeFragment extends Fragment {
     private SliderView sliderView;
     TextView onclick;
     SearchView searchView;
@@ -74,20 +69,19 @@ public class HomFragment extends Fragment {
     private SlidePageAdapter1 slidePageAdapter;
     ProgressBar progressBar;
     SharedPreferences sharedPreferences;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_hom, container, false);
-        //Ánh Xạ
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+
         sliderView = root.findViewById(R.id.imageSlider);
         onclick = root.findViewById(R.id.onclick);
         progressBar = root.findViewById(R.id.progress);
         recyclerView = root.findViewById(R.id.recyclerView);
         sharedPreferences = getContext().getSharedPreferences("PrefsFile", Context.MODE_PRIVATE);
         String url = "http://sanphambanhang.000webhostapp.com/Name.php";
+        PostData(url);
         // slide View
         final SliderAdapterExample adapter = new SliderAdapterExample(getContext());
         sliderView.setSliderAdapter(adapter);
@@ -139,7 +133,7 @@ public class HomFragment extends Fragment {
         Call<List<Slide>> call = apiInterface.getJson();
         call.enqueue(new Callback<List<Slide>>() {
             @Override
-            public void onResponse(Call<List<Slide>> call, Response<List<Slide>> response) {
+            public void onResponse(Call<List<Slide>> call, retrofit2.Response<List<Slide>> response) {
                 progressBar.setVisibility(View.GONE);
                 onclick.setVisibility(View.VISIBLE);
                 sliderView.setVisibility(View.VISIBLE);
@@ -156,32 +150,48 @@ public class HomFragment extends Fragment {
             }
         });
     }
+    private void PostData(final String url) {
+        final RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(final String response) {
+                Toast.makeText(getContext(), ""+response, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),sharedPreferences.getString("userId",userId) ,Toast.LENGTH_SHORT).show();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("giohang");
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject explrObject = jsonArray.getJSONObject(i);
+                        onclick.setText(explrObject.getString("user_name"));
+//                        emaidn.setText(explrObject.getString("email"));
+//                        pass = explrObject.getString("password");
+//                        diachigiaohang.setText(explrObject.getString("diachi" ) + explrObject.getString("tinh" ) + explrObject.getString("phuongxa" ) +
+//                                explrObject.getString("quanhuyen" ) + explrObject.getString("sdt" ));
+//                        Toast.makeText(CAPNHATTHONGTIN.this, ""+preferences.getString("userId",userId), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
 
-//    @SuppressLint("StaticFieldLeak")
-//    public static class AsyncTaskLoadImage1 extends AsyncTask<String, String, Bitmap> {
-//        private final static String TAG = "AsyncTaskLoadImage";
-//        private ImageView imageView;
-//
-//        AsyncTaskLoadImage1(ImageView imageView) {
-//            this.imageView = imageView;
-//        }
-//
-//        @Override
-//        protected Bitmap doInBackground(String... params) {
-//            Bitmap bitmap = null;
-//            try {
-//                URL url = new URL(params[0]);
-//                bitmap = BitmapFactory.decodeStream((InputStream) url.getContent());
-//            } catch (IOException e) {
-//                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
-//            }
-//            return bitmap;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Bitmap bitmap) {
-//            imageView.setImageBitmap(bitmap);
-//        }
-//    }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) { // lau vc // log zo di t xem thu// chòe xíu, chừ lấy từng cái ra phải hân thì listview á
+                Log.d("vvvv", "onErrorResponse: " + error); // mở phai php t xem thửu ok
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("user_id",sharedPreferences.getString("userId",userId));
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest); // cái ni để làm chi qên r
+
+
+    }
 }
