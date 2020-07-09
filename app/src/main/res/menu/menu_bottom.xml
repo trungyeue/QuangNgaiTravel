@@ -20,14 +20,14 @@
         app:cnb_textColor="#fff" />
 
     <item
-        android:id="@+id/account"
+        android:id="@+id/breakfast"
         android:icon="@drawable/amthuc"
         android:title="Ẩm thực"
         app:cnb_backgroundColor="#0000FF"
         app:cnb_iconColor="#fff"
         app:cnb_textColor="#fff" />
     <item
-        android:id="@+id/cafe"
+        android:id="@+id/account"
         android:icon="@drawable/account"
         android:title="Tài Khoản"
         app:cnb_backgroundColor="#0000FF"

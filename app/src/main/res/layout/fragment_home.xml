@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.HomeFragment">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="7dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp">
+
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/imageSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_gravity="center"
+                        android:transitionName="imageTransition"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderCircularHandlerEnabled="true"
+                        app:sliderIndicatorAnimationDuration="600"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="#5A5A5A"
+                        app:sliderIndicatorUnselectedColor="#FFF"
+                        app:sliderScrollTimeInSec="1"
+                        app:sliderStartAutoCycle="true" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/onclick1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Top ăn uống"
+                        android:textColor="#000"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/onclick"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Tất cả"
+                        android:textColor="#1063FA"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <!--            <TextView-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="Top ăn uống"-->
+                <!--                android:textColor="#000"-->
+                <!--                android:textSize="18dp"-->
+                <!--                android:textStyle="bold" />-->
+
+                <!--            <androidx.cardview.widget.CardView-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="5dp"-->
+                <!--                app:cardCornerRadius="8dp">-->
+
+                <!--                <HorizontalScrollView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:scrollbarSize="0dp">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginLeft="10dp"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="300dp"-->
+                <!--                                android:layout_height="200dp"-->
+                <!--                                android:background="@drawable/bienmykhe1"-->
+                <!--                                android:gravity="bottom"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:text="Bãi biển Mỹ Khê"-->
+                <!--                                    android:textColor="#F5F2F2"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:ellipsize="end"-->
+                <!--                                    android:maxLines="1"-->
+                <!--                                    android:text="Bờ Kè Quảng Ngãi, đường Tôn Đức Thắng"-->
+                <!--                                    android:textColor="#F5F2F2" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginLeft="10dp"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="300dp"-->
+                <!--                                android:layout_height="200dp"-->
+                <!--                                android:background="@drawable/biendungquat"-->
+                <!--                                android:gravity="bottom"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:text="Bãi biển dung quất"-->
+                <!--                                    android:textColor="#F5F2F2"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:ellipsize="end"-->
+                <!--                                    android:maxLines="1"-->
+                <!--                                    android:text="Bình Sơn,Quảng Ngãi"-->
+                <!--                                    android:textColor="#F5F2F2" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginLeft="10dp"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="300dp"-->
+                <!--                                android:layout_height="200dp"-->
+                <!--                                android:background="@drawable/daolyson"-->
+                <!--                                android:gravity="bottom"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:text="Đảo Lý Sơn"-->
+                <!--                                    android:textColor="#F5F2F2"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:ellipsize="end"-->
+                <!--                                    android:maxLines="1"-->
+                <!--                                    android:text="Đảo Lý Sơn,Quảng Ngãi"-->
+                <!--                                    android:textColor="#F5F2F2" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginLeft="10dp"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="300dp"-->
+                <!--                                android:layout_height="200dp"-->
+                <!--                                android:background="@drawable/xahuynh"-->
+                <!--                                android:gravity="bottom"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:text="Biển Sa Huỳnh"-->
+                <!--                                    android:textColor="#F5F2F2"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:ellipsize="end"-->
+                <!--                                    android:maxLines="1"-->
+                <!--                                    android:text="Đức Phổ,Phổ Thạnh,Đức Phổ,Quảng Ngãi"-->
+                <!--                                    android:textColor="#F5F2F2" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginLeft="10dp"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="300dp"-->
+                <!--                                android:layout_height="200dp"-->
+                <!--                                android:background="@drawable/bienmykhe1"-->
+                <!--                                android:gravity="bottom"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:text="Bãi biển Mỹ Khê"-->
+                <!--                                    android:textColor="#F5F2F2"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:ellipsize="end"-->
+                <!--                                    android:maxLines="1"-->
+                <!--                                    android:text="Bờ Kè Quảng Ngãi, đường Tôn Đức Thắng"-->
+                <!--                                    android:textColor="#F5F2F2" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginLeft="10dp"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="300dp"-->
+                <!--                                android:layout_height="200dp"-->
+                <!--                                android:background="@drawable/bienmykhe1"-->
+                <!--                                android:gravity="bottom"-->
+                <!--                                android:orientation="vertical">-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:text="Bãi biển Mỹ Khê"-->
+                <!--                                    android:textColor="#F5F2F2"-->
+                <!--                                    android:textStyle="bold" />-->
+
+                <!--                                <TextView-->
+                <!--                                    android:layout_width="wrap_content"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:ellipsize="end"-->
+                <!--                                    android:maxLines="1"-->
+                <!--                                    android:text="Bờ Kè Quảng Ngãi, đường Tôn Đức Thắng"-->
+                <!--                                    android:textColor="#F5F2F2" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+                <!--                    </LinearLayout>-->
+                <!--                </HorizontalScrollView>-->
+                <!--            </androidx.cardview.widget.CardView>-->
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>
